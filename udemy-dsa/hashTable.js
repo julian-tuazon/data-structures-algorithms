@@ -21,6 +21,7 @@ class HashTable {
         }
       }
     }
+    return undefined;
   }
 
   set(key, value) {
@@ -44,14 +45,5 @@ class HashTable {
     return keysArr;
   }
 }
-
-const ht = new HashTable(5);
-ht.set('grapes', 200);
-ht.set('apples', 54);
-ht.set('wine', 22);
-ht.set('cheese', 99);
-
-console.log(ht.data);
-console.log(ht.get('grapes'));
 
 exports.HashTable = HashTable;
