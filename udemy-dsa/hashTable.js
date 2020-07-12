@@ -31,6 +31,18 @@ class HashTable {
     this.data[address].push([key, value]);
     return this.data;
   }
+
+  keys() {
+    const keysArr = [];
+    for (let i = 0; i < this.data.length; i++) {
+      const currentBucket = this.data[i];
+      if (!currentBucket) continue;
+      for (let k = 0; k < currentBucket.length; k++) {
+        keysArr.push(currentBucket[k][0]);
+      }
+    }
+    return keysArr;
+  }
 }
 
 const ht = new HashTable(5);
