@@ -17,6 +17,11 @@ describe('firstRecurringChar()', () => {
       expect(firstRecurringChar([1, 2, 3])).to.equal(undefined);
     });
   });
+  context('empty array', () => {
+    it('should return undefined', () => {
+      expect(firstRecurringChar([])).to.equal(undefined);
+    });
+  });
 });
 
 describe('firstRecurringChar2()', () => {
@@ -33,6 +38,11 @@ describe('firstRecurringChar2()', () => {
   context('no recurring chars', () => {
     it('should return undefined', () => {
       expect(firstRecurringChar2([1, 2, 3])).to.equal(undefined);
+    });
+  });
+  context('empty array', () => {
+    it('should return undefined', () => {
+      expect(firstRecurringChar2([])).to.equal(undefined);
     });
   });
 });
