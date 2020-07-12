@@ -38,6 +38,14 @@ class LinkedList {
     this.length++;
   }
 
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) this.head = this.head.next;
+    const currentNode = this.traverseToIndex(index - 1);
+    currentNode.next = currentNode.next.next;
+    this.length--;
+  }
+
   traverseToIndex(index) {
     let currentNode = this.head;
     for (let i = 0; i < index; i++) {
@@ -64,4 +72,6 @@ ll.prepend(9001);
 ll.insert(3, 'woooot');
 ll.insert(0, 'front woo');
 ll.insert(100, 'back woo');
+console.log(ll.printList());
+ll.remove(4);
 console.log(ll.printList());
