@@ -32,13 +32,18 @@ class LinkedList {
     if (index === 0) return this.prepend(value);
     if (index >= this.length) return this.append(value);
     const nodeToInsert = new Node(value);
-    let currentNode = this.head;
-    for (let i = 1; i < index; i++) {
-      currentNode = currentNode.next;
-    }
+    const currentNode = this.traverseToIndex(index - 1);
     nodeToInsert.next = currentNode.next;
     currentNode.next = nodeToInsert;
     this.length++;
+  }
+
+  traverseToIndex(index) {
+    let currentNode = this.head;
+    for (let i = 0; i < index; i++) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
   }
 
   printList() {
