@@ -124,16 +124,3 @@ class DoublyLinkedList {
     console.log(doublyLinkedList);
   }
 }
-
-const dll = new DoublyLinkedList(1);
-dll.insert(2, 23);
-dll.insert(1, 4);
-dll.insert(1, 7);
-dll.insert(2, 99);
-dll.insert(200, 201);
-dll.insert(0, 11);
-dll.insert(3, 5);
-console.log('tail', dll.tail.value);
-console.log('head', dll.head.value);
-console.log('len', dll.length);
-dll.printList();
