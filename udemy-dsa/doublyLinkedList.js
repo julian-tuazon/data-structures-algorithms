@@ -121,6 +121,6 @@ class DoublyLinkedList {
       doublyLinkedList.push(currentNode.value);
       currentNode = currentNode.next;
     }
-    console.log(doublyLinkedList);
+    return doublyLinkedList;
   }
 }
