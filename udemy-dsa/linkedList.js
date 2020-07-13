@@ -65,13 +65,5 @@ class LinkedList {
   }
 }
 
-const ll = new LinkedList(10);
-ll.append(6);
-ll.append(1);
-ll.prepend(9001);
-ll.insert(3, 'woooot');
-ll.insert(0, 'front woo');
-ll.insert(100, 'back woo');
-console.log(ll.printList());
-ll.remove(4);
-console.log(ll.printList());
+exports.LinkedList = LinkedList;
+exports.Node = Node;
