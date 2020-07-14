@@ -34,13 +34,3 @@ class Queue {
     return this.front.value;
   }
 }
-
-const q = new Queue();
-q.enqueue(1);
-q.enqueue(2);
-console.log('peek', q.peek());
-console.log('dq', q.dequeue());
-q.enqueue(3);
-console.log('dq', q.dequeue());
-console.log('dq', q.dequeue());
-console.log('q', q);
