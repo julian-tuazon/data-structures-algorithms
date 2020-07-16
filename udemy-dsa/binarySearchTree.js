@@ -47,14 +47,16 @@ class BinarySearchTree {
 
   findNode(value, currentNode) {
     if (value === currentNode.value) {
+      console.log('found em', value);
       return currentNode;
-    } else if (value < currentNode && currentNode.left !== null) {
+    } else if (value < currentNode.value && currentNode.left !== null) {
       currentNode = currentNode.left;
       return this.findNode(value, currentNode);
-    } else if (value > currentNode && currentNode.right !== null) {
+    } else if (value > currentNode.value && currentNode.right !== null) {
       currentNode = currentNode.right;
       return this.findNode(value, currentNode);
     } else {
+      console.log('mission failed');
       return undefined;
     }
   }
@@ -68,9 +70,7 @@ tree.insert(20)
 tree.insert(170)
 tree.insert(15)
 tree.insert(1)
-console.log(JSON.stringify(traverse(tree.root)))
-console.log('find 4', tree.lookup(9));
-console.log('find 4', tree.lookup(99));
+console.log(JSON.stringify(traverse(tree.root)));
 
 function traverse(node) {
   const tree = { value: node.value };
