@@ -47,16 +47,12 @@ class BinarySearchTree {
 
   findNode(value, currentNode) {
     if (value === currentNode.value) {
-      console.log('found em', value);
       return currentNode;
     } else if (value < currentNode.value && currentNode.left !== null) {
-      currentNode = currentNode.left;
-      return this.findNode(value, currentNode);
+      return this.findNode(value, currentNode.left);
     } else if (value > currentNode.value && currentNode.right !== null) {
-      currentNode = currentNode.right;
-      return this.findNode(value, currentNode);
+      return this.findNode(value, currentNode.right);
     } else {
-      console.log('mission failed');
       return undefined;
     }
   }
