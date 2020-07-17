@@ -56,4 +56,47 @@ class BinarySearchTree {
       return undefined;
     }
   }
+
+  remove(value) {
+    let currentNode = this.root;
+    if (!currentNode) return undefined;
+    let previousNode = null;
+    while (currentNode) {
+      if (value === currentNode.value) {
+        let replacementNode = null;
+        if (currentNode.right && currentNode.right.left) {
+          replacementNode = currentNode.right.left;
+          let leftmostParent = currentNode.right;
+          while (replacementNode.left) {
+            leftmostParent = replacementNode;
+            replacementNode = replacementNode.left;
+          }
+          leftmostParent.left = replacementNode.right;
+          replacementNode.left = currentNode.left;
+          replacementNode.right = currentNode.right;
+        } else if (currentNode.right) {
+          replacementNode = currentNode.right;
+          replacementNode.left = currentNode.left;
+        } else if (currentNode.left) {
+          replacementNode = currentNode.left;
+        }
+        if (!previousNode) {
+          this.root = replacementNode;
+        } else if (currentNode.value > previousNode.value) {
+          previousNode.right = replacementNode;
+        } else {
+          previousNode.left = replacementNode;
+        }
+        return true;
+      } else if (value < currentNode.value) {
+        previousNode = currentNode;
+        currentNode = currentNode.left;
+      } else if (value > currentNode.value) {
+        previousNode = currentNode;
+        currentNode = currentNode.right;
+      } else {
+        return undefined;
+      }
+    }
+  }
 }
