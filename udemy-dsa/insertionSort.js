@@ -1,17 +1,12 @@
 function insertionSort(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
-    const currentItem = arr[i + 1];
-    if (currentItem < arr[i]) {
-      for (let k = 0; k < i + 1; k++) {
-        if (currentItem < arr[k]) {
-          arr.splice(i + 1, 1);
-          arr.splice(k, 0, currentItem);
-          break;
-        }
-      }
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
     }
+    arr[j + 1] = key;
   }
   return arr;
 }
-
-console.log(insertionSort([2,4,1,15,3,20,10]))
