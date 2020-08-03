@@ -122,4 +122,62 @@ class BinarySearchTree {
     if (currentNode.right) queue.push(currentNode.right);
     return this.breadthFirstSearchRecursive(queue, list);
   }
+
+  DFSInOrder() {
+    return traverseInOrder(this.root, []);
+  }
+
+  DFSPostOrder() {
+    return traversePostOrder(this.root, []);
+  }
+
+  DFSPreOrder() {
+    return traversePreOrder(this.root, []);
+  }
 }
+
+function traverseInOrder(node, list) {
+  if (node.left) {
+    traverseInOrder(node.left, list);
+  }
+  list.push(node.value);
+  if (node.right) {
+    traverseInOrder(node.right, list);
+  }
+  return list;
+}
+
+function traversePostOrder(node, list) {
+  if (node.left) {
+    traversePostOrder(node.left, list);
+  }
+  if (node.right) {
+    traversePostOrder(node.right, list);
+  }
+  list.push(node.value);
+  return list;
+}
+
+function traversePreOrder(node, list) {
+  list.push(node.value);
+  if (node.left) {
+    traversePreOrder(node.left, list);
+  }
+  if (node.right) {
+    traversePreOrder(node.right, list);
+  }
+  return list;
+}
+
+const tree = new BinarySearchTree();
+tree.insert(9)
+tree.insert(4)
+tree.insert(6)
+tree.insert(20)
+tree.insert(170)
+tree.insert(15)
+tree.insert(1)
+
+console.log('DFS in order', tree.DFSInOrder());
+console.log('DFS post order', tree.DFSPostOrder());
+console.log('DFS pre order', tree.DFSPreOrder());
