@@ -18,13 +18,23 @@ function fibonacciRecursive(n) {
 function fibonacciMemoization(n) {
   let cache = {};
   return (function inner(n) {
+    if (n in cache) return cache[n];
     if (n < 2) return n;
-    if (cache[n]) return cache[n];
-    return inner(n - 1) + inner(n - 2);
+    cache[n] = inner(n - 1) + inner(n - 2);
+    return cache[n];
   })(n);
 }
 
-console.log(fibonacciMemoization(7));
+function fibonacciTabulation(n) {
+  if (n < 2) return n;
+  const fiboSequence = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    fiboSequence.push(fiboSequence[i - 2] + fiboSequence[i - 1]);
+  }
+  return fiboSequence.pop();
+}
 
 exports.fibonacciIterative = fibonacciIterative;
 exports.fibonacciRecursive = fibonacciRecursive;
+exports.fibonacciMemoization = fibonacciMemoization;
+exports.fibonacciTabulation = fibonacciTabulation;
